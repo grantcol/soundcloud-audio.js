@@ -169,6 +169,13 @@ SoundCloud.prototype.seek = function (e) {
     this.audio.currentTime = percent * (this.audio.duration || 0);
 };
 
+SoundCloud.prototype.seekTo = function(milliseconds) {
+    if(!this.audio.readyState) {
+        return false;
+    } 
+    this.audio.currentTime = Math.round(milliseconds/1000);
+};
+
 module.exports = SoundCloud;
 
 },{}]},{},[1])(1)
