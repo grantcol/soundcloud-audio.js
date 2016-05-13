@@ -35,7 +35,8 @@ SoundCloud.prototype.resolve = function (url, callback) {
 
     url = this._baseUrl + '/resolve.json?url=' + url + '&client_id=' + this._clientId;
 
-    this._jsonp(url, function (data) {
+    this._jsonp(url, function (data, error) {
+        if(error){console.log("ERROR", error); return false;}
         if (Array.isArray(data)) {
             var tracks = data;
             data = {tracks: tracks};
